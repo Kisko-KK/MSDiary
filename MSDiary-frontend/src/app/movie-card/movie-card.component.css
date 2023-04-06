@@ -1,0 +1,21 @@
+.card {
+    margin-bottom: 15px;
+    min-height: 425px;
+    max-height: 450px;
+    max-width: 250px;
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .btn.btn-primary {
+    position: absolute;
+    margin-bottom: 20px;
+    bottom: 0;
+  }
+  
+  .card-body{
+    max-height: 100px;
+  }

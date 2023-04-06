@@ -1,0 +1,64 @@
+
+<div 
+  class="container"
+  *ngIf="movieDetails$ | async as movie">
+
+  
+  <!-- <pre>{{ movie | json }}</pre> -->
+  
+
+  <img 
+        class="img-backdrop" 
+        [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path"
+        [alt]="movie.title">
+
+  <!-- Portfolio Item Heading -->
+  <h1 class="my-4 text-white">{{ movie.title }}
+    <small>
+      <span class="badge">
+        {{ movie.runtime + " minutes"}}
+      </span>
+    </small>
+  </h1>
+
+  <!-- Portfolio Item Row -->
+  <div class="row">
+
+    <div class="col-md-3">
+      <img  
+        class="img-fluid" 
+        [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path"
+        [alt]="movie.title">
+    </div>
+
+    <div class="col-md-7">
+      <span 
+        class="badge badge-success"
+        *ngFor="let genre of movie.genres">
+        {{ genre.name }}
+      </span>
+
+      <h3 class="my-3 text-white">Plot</h3>
+      <p class="text-white">{{ movie.overview }}</p>
+
+      <h3 class="my-3 text-white">Budget</h3>
+      <p class="text-white">{{ movie.budget | currency}}</p>
+
+      <h5 class="my-5 text-white"><a [href]="movie.homepage">Find out more!</a></h5>
+      
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+  
+  <div class="reviews">REVIEWS</div>
+  <hr class="m-0">
+  <app-review-card *ngFor="let review of reviews$; let i = index"
+    [review]="review"
+  ></app-review-card>
+  
+
+  
+</div>
+<!-- /.container -->

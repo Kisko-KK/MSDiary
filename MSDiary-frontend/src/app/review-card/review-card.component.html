@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div>
+    <div class="d-flex flex-row align-items-center">
+        <img
+      src="https://icons.iconarchive.com/icons/papirus-team/papirus-status/256/avatar-default-icon.png"
+      alt="User icon"
+      />
+        <div>
+            <div>Review by <strong></strong></div>
+            <small class="text-muted">{{review.time |  date:'MM/dd/yyyy'}}</small>
+        </div>
+        
+    
+        <span class="fa fa-star" [ngClass]="{ 'checked': review.score>= 1 }"></span>
+        <span class="fa fa-star" [ngClass]="{ 'checked': review.score>= 1.5 }"></span>
+        <span class="fa fa-star" [ngClass]="{ 'checked': review.score>= 2.5 }"></span>
+        <span class="fa fa-star" [ngClass]="{ 'checked': review.score>= 3.5 }"></span>
+        <span class="fa fa-star" [ngClass]="{ 'checked': review.score>= 4.5 }"></span>
+        
+    </div>
+    
+    <div class="description">
+      <p class="mb-1">{{review.description}}</p>
+    </div>
+    <hr class="m-2">
+</div>
+
+

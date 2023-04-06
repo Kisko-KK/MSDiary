@@ -1,0 +1,28 @@
+{
+  "name": "msdiary-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec npx babel-node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.21.0",
+    "@hapi/boom": "^10.0.1",
+    "@hapi/hapi": "^21.3.0",
+    "hapi-cors": "^1.0.3",
+    "mysql": "^2.18.1",
+    "nv-js-err-tmpl": "^1.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/node": "^7.20.7",
+    "@babel/plugin-transform-runtime": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "nodemon": "^2.0.22"
+  }
+}

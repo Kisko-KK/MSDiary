@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="form-group">
+      <input 
+        id="query" 
+        type="text" 
+        class="form-control" 
+        [(ngModel)]="query"
+        (keyup.enter)="getSearchResults()">
+    </div>
+    <button type="button" (click)="getSearchResults()" class="form-control btn btn-primary">Search</button>
+    <hr>
+    
+    <div *ngIf="!isSearched">
+      <app-movies-row
+      [movies]="popularMovies$ | async"
+      [title]="'Most popular this week'"
+      [isSecond]="false"
+      >
+    </app-movies-row>
+    <app-movies-row
+      [movies]="nowPlayingMovies$ | async"
+      [title]="'Now playing in theater'"
+      [isSecond]="true"
+      >
+    </app-movies-row>
+    <app-movies-row
+      [movies]="upcomingMovies$ | async"
+      [title]="'Upcoming movies'"
+      [isSecond]="false"
+      >
+    </app-movies-row>
+    <app-movies-row
+      [movies]="topRatedMovies$ | async"
+      [title]="'Top Rated Movies'"
+      [isSecond]="true"
+      >
+    </app-movies-row>
+    </div>
+    
+
+
+
+
+    <div class="row">
+        <app-movie-card 
+          *ngFor="let movie of movies$ | async"
+          [movie]="movie"
+          class="col-xl-2 col-lg-3 col-md-6 col-sm-6 col-xs-12">
+        </app-movie-card>
+      </div>
+    
+
+
+
+    
+  </div>

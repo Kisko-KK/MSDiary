@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+*{
+    color: white;
+}
+
+body{
+    background-color: #14181c;
+}
+
+.container {
+    max-width: 1100px;
+}
