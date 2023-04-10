@@ -7,7 +7,7 @@ export const getAllReviewsForMovie = {
     handler: async (req, h) => {
         const id = req.params.id;
         const {results} = await db.query(
-            'SELECT * FROM reviews WHERE movie_id = ?',
+            'SELECT * FROM reviews WHERE movie_id = ? ORDER BY time DESC',
             [id],
         );
         return results;

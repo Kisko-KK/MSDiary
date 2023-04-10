@@ -1,0 +1,37 @@
+<div class="popup">
+  <h2>I WATCHED..</h2>
+  <h3>{{title}}</h3>
+
+  <div class="modal-body">
+    <form [formGroup]="epform" (ngSubmit)="review()">
+      <div class="mb-3">
+        <div class="input-description">
+          <textarea name="description" class="form-control" formControlName="description" placeholder="Add a review.."></textarea>
+        </div>
+      </div>
+    
+
+    <div class="row align-items-center">
+      <div class="col-md-3">
+        <span id="rating-label">RATING:</span>
+      </div>
+      <div class="rating col-md-5">
+        <i class="fas fa-star" (click)="rate(1)" [ngClass]="{'selected': rating >= 1}"></i>
+        <i class="fas fa-star" (click)="rate(2)" [ngClass]="{'selected': rating >= 2}"></i>
+        <i class="fas fa-star" (click)="rate(3)" [ngClass]="{'selected': rating >= 3}"></i>
+        <i class="fas fa-star" (click)="rate(4)" [ngClass]="{'selected': rating >= 4}"></i>
+        <i class="fas fa-star" (click)="rate(5)" [ngClass]="{'selected': rating >= 5}"></i>
+      </div>
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-success">REVIEW</button>
+      </div>
+    </div>
+
+  </form>
+    
+    
+  </div>
+</div>
+  
+  
+

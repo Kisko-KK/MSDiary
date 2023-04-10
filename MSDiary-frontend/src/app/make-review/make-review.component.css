@@ -1,0 +1,63 @@
+*{
+    color: black;
+    
+}
+
+.rating {
+    font-size: 24px;
+    position: relative;
+    transform: translate(-20px,-2px);
+  }
+  
+.rating i {
+  color: #ddd;
+  cursor: pointer;
+}
+
+.rating .selected {
+  color: #f1c40f;
+}
+.popup{
+  background-color: #456;
+  border-radius: 5px;
+}
+
+textarea{
+  height: 150px;
+  font-size: 1.2em;
+  background-color: #cde;
+}
+
+h2, h3{
+  margin-left: 16px;
+}
+h2{
+  padding-top: 10px;
+  margin-bottom: 3px;
+  color: #9ab;
+  font-weight: lighter;
+  font-size: 0.9;
+}
+
+h3{
+  font-size: 2em;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+#rating-label{
+  font-size: 1.6em;
+  color: white;
+  font-weight: 400;
+}
+
+button{
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  transform: translate(30px, -9px);
+
+}
+
+ 

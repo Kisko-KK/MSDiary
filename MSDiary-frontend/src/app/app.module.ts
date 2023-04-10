@@ -11,6 +11,10 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MoviesRowComponent } from './movies-row/movies-row.component';
 import { ReviewCardComponent } from './review-card/review-card.component';
+import { MakeReviewComponent } from './make-review/make-review.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,13 +24,18 @@ import { ReviewCardComponent } from './review-card/review-card.component';
     MovieCardComponent,
     MovieDetailsComponent,
     MoviesRowComponent,
-    ReviewCardComponent
+    ReviewCardComponent,
+    MakeReviewComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

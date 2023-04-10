@@ -1,4 +1,6 @@
-
+<head>
+  <script src="https://kit.fontawesome.com/0a66e31f85.js" crossorigin="anonymous"></script>
+</head>
 <div 
   class="container"
   *ngIf="movieDetails$ | async as movie">
@@ -15,7 +17,7 @@
   <!-- Portfolio Item Heading -->
   <h1 class="my-4 text-white">{{ movie.title }}
     <small>
-      <span class="badge">
+      <span class="duration">
         {{ movie.runtime + " minutes"}}
       </span>
     </small>
@@ -31,34 +33,68 @@
         [alt]="movie.title">
     </div>
 
-    <div class="col-md-7">
+    <div class="col-md-6">
       <span 
-        class="badge badge-success"
+        class="badge rounded-pill bg-success"
         *ngFor="let genre of movie.genres">
         {{ genre.name }}
       </span>
 
       <h3 class="my-3 text-white">Plot</h3>
-      <p class="text-white">{{ movie.overview }}</p>
+      <p class=>{{ movie.overview }}</p>
 
       <h3 class="my-3 text-white">Budget</h3>
-      <p class="text-white">{{ movie.budget | currency}}</p>
+      <p class=>{{ movie.budget | currency}}</p>
 
-      <h5 class="my-5 text-white"><a [href]="movie.homepage">Find out more!</a></h5>
-      
+      <h4 class="my-5"><a [href]="movie.homepage">Find out more!</a></h4>
+    </div>
+
+
+
+
+
+    <div class="col-md-3" id="sidebar">
+
+      <ul class="row-1">
+        <li><a href=""><i class="fa-solid fa-heart fa-3x"></i></a></li>
+        <li><a href=""><i class="fa-solid fa-eye fa-3x"></i></a></li>
+      </ul>
+      <ul>
+        <li class="font">Like</li>
+        <li class="font">Watch</li>
+      </ul>
+      <hr>
+      <div>
+        <a (click)="openDialog(movie.title)" class="font">Review..</a>
+      </div>
+      <hr>
+      <div>
+        <a href="" class="font">Add to list..</a>
+      </div>
+      <hr>
+      <ul>
+        <li><a href=""><i class="fa-brands fa-facebook fa-2x"></i></a></li>
+        <li><a href=""><i class="fa-brands fa-twitter fa-2x"></i></a></li>
+        <li><a href=""><i class="fa-brands fa-instagram fa-2x"></i></a></li>
+      </ul>
     </div>
 
   </div>
   <!-- /.row -->
 
   
-  <div class="reviews">REVIEWS</div>
+  <!-- REVIEWS -->
+  <div class="row">
+    <div class="reviews col-md-11">LATEST REVIEWS</div>
+    <div class="col-md-1" id="more-label"><a (click)="showMoreReviews()">MORE</a></div>
+  </div>
   <hr class="m-0">
-  <app-review-card *ngFor="let review of reviews$; let i = index"
+  <app-review-card *ngFor="let review of reviews?.slice(0, numReviewsDisplayed); let i = index"
     [review]="review"
   ></app-review-card>
   
-
   
+  
+
 </div>
 <!-- /.container -->

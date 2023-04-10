@@ -75,8 +75,8 @@ export interface SpokenLanguage {
 }
 
 export interface Review {
-    userId: string;
-    movieId: string;
+    user_id: string;
+    movie_id: string;
     time: string;
     description: string;
     score: number;

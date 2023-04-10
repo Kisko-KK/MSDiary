@@ -1,7 +1,14 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { map, Observable } from 'rxjs';
 import { Movie, Review, User } from './movie.module';
+
+
+const httpOptions = {
+  headers : new HttpHeaders({
+    'Content-Type' : 'application/json', 
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +65,14 @@ export class MovieService {
 
   getUserNameById(userId : string) : Observable<Array<User>>{
     return this.http.get<Array<User>>(`http://localhost:8000/api/users/${userId}`);
+  }
+
+  createNewReview(movieId : string, description : string, score : number) : Observable<Review>{
+    return this.http.post<Review>(
+      'http://localhost:8000/api/movie/reviews',
+      {movieId, description, score},
+      httpOptions
+    )
   }
 
 
