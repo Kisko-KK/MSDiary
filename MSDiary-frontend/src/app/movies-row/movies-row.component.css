@@ -24,11 +24,19 @@ a{
 }
 
 #card{
-    border: 2px solid rgba(255, 255, 255, .5);
+    border: 2px solid #ADB9C4;
 }
 
 #card :hover{
     transform: scale(1.03);
     transition: 50ms;
     overflow: hidden;
+}
+
+h6{
+    margin: 0px 4px;
+}
+h4{
+    font-size: 1.5em;
+    margin-top: 10px;
 }

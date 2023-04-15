@@ -25,21 +25,18 @@
     </app-movies-row>
     <app-movies-row
       [movies]="upcomingMovies$ | async"
-      [title]="'Upcoming movies'"
+      [title]="'Upcoming'"
       [isSecond]="false"
       >
     </app-movies-row>
     <app-movies-row
       [movies]="topRatedMovies$ | async"
-      [title]="'Top Rated Movies'"
+      [title]="'Top Rated'"
       [isSecond]="true"
       >
     </app-movies-row>
     </div>
     
-
-
-
 
     <div class="row">
         <app-movie-card 
@@ -49,8 +46,5 @@
         </app-movie-card>
       </div>
     
-
-
-
-    
   </div>
+  <app-footer></app-footer>

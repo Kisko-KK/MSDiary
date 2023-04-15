@@ -15,6 +15,7 @@ import { MakeReviewComponent } from './make-review/make-review.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MoviesRowComponent,
     ReviewCardComponent,
     MakeReviewComponent,
+    FooterComponent,
     
   ],
   imports: [

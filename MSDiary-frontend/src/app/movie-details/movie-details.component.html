@@ -28,7 +28,8 @@
 
     <div class="col-md-3">
       <img  
-        class="img-fluid" 
+        class="img-fluid"
+        id="poster" 
         [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path"
         [alt]="movie.title">
     </div>
@@ -46,9 +47,11 @@
       <h3 class="my-3 text-white">Budget</h3>
       <p class=>{{ movie.budget | currency}}</p>
 
+      <h3 class="my-3 text-white">RATINGS</h3>
+      <p> Imdb {{movie.vote_average}}</p>
+
       <h4 class="my-5"><a [href]="movie.homepage">Find out more!</a></h4>
     </div>
-
 
 
 
@@ -69,7 +72,7 @@
       </div>
       <hr>
       <div>
-        <a href="" class="font">Add to list..</a>
+        <a href="" class="font">Add to diary..</a>
       </div>
       <hr>
       <ul>
@@ -93,8 +96,6 @@
     [review]="review"
   ></app-review-card>
   
-  
-  
-
 </div>
 <!-- /.container -->
+<app-footer></app-footer>
