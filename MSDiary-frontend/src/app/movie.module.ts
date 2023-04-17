@@ -86,3 +86,11 @@ export interface User {
     id : string;
     name : string;
 }
+
+export interface Like {
+    liked : number;
+}
+
+export interface Watch {
+    watched : number;
+}

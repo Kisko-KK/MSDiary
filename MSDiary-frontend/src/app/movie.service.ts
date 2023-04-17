@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { map, Observable } from 'rxjs';
-import { Movie, Review, User } from './movie.module';
+import { Like, Movie, Review, User, Watch } from './movie.module';
 
 
 const httpOptions = {
@@ -75,6 +75,29 @@ export class MovieService {
     )
   }
 
+  getIsLiked(userId : string, movieId : string) : Observable<Like>{
+    return this.http.get<Like>(`http://localhost:8000/api/movie/likes/${movieId}/${userId}`);
+  }
+
+  updateLike(userId : string, movieId : string) : Observable<any>{
+    return this.http.post<Review>(
+      'http://localhost:8000/api/movie/likes/update',
+      {userId, movieId},
+      httpOptions
+    )
+  }
+
+  getIsWatched(userId : string, movieId : string) : Observable<Watch>{
+    return this.http.get<Watch>(`http://localhost:8000/api/movie/watches/${movieId}/${userId}`);
+  }
+
+  updateWatch(userId : string, movieId : string) : Observable<any>{
+    return this.http.post<Review>(
+      'http://localhost:8000/api/movie/watches/update',
+      {userId, movieId},
+      httpOptions
+    )
+  }
 
 
 }

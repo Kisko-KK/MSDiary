@@ -59,12 +59,12 @@
     <div class="col-md-3" id="sidebar">
 
       <ul class="row-1">
-        <li><a href=""><i class="fa-solid fa-heart fa-3x"></i></a></li>
-        <li><a href=""><i class="fa-solid fa-eye fa-3x"></i></a></li>
+        <li><a><i class="fa-solid fa-heart fa-3x" [ngClass]="{'activeLiked': isLiked}" (click)="toggleLike()"></i></a></li>
+        <li><a><i class="fa-solid fa-eye fa-3x" [ngClass]="{'activeWatched': isWatched}" (click)="toggleWatch()" ></i></a></li>
       </ul>
       <ul>
-        <li class="font">Like</li>
-        <li class="font">Watch</li>
+        <li class="font cont">{{likedTitle}}</li>
+        <li class="font cont">{{watchedTitle}}</li>
       </ul>
       <hr>
       <div>

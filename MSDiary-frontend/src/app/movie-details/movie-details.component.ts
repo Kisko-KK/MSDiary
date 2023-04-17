@@ -14,11 +14,17 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MovieDetailsComponent implements OnInit{
 
+
+
   movieDetails$: Observable<MovieDetails> | undefined;
   reviews: Array<Review> | undefined;
   user: Array<User> | undefined;
   movieId!: string;
 
+  isLiked : number =0;
+  likedTitle : string = "Like";
+  isWatched : number =0;
+  watchedTitle : string = "Watch";
   numReviewsDisplayed = 3;
   
   
@@ -47,7 +53,10 @@ export class MovieDetailsComponent implements OnInit{
       });
     });
     
+    this.setIsLiked();
+    this.setIsWatched();
   }
+  
 
   openDialog(title : string) {
     const modalRef = this.modalService.open(MakeReviewComponent, {centered : true, animation : true});
@@ -61,5 +70,44 @@ export class MovieDetailsComponent implements OnInit{
       window.scrollTo(0, document.body.scrollHeight);
     }, 40);
   }
+
+  setIsLiked(){
+    this.movieService.getIsLiked("1", this.movieId).subscribe((like) => 
+    {
+      this.isLiked = like.liked;
+      if (like.liked == 0){
+        this.likedTitle = "Like";
+      }
+      else{
+        this.likedTitle = "Liked";
+      }
+    })
+  }
+
+  toggleLike() {
+    this.movieService.updateLike("1", this.movieId).subscribe();
+    this.setIsLiked()
+  }
+
+  setIsWatched(){
+    this.movieService.getIsWatched("1", this.movieId).subscribe((watch) => 
+    {
+      this.isWatched = watch.watched;
+      if (watch.watched == 0){
+        this.watchedTitle = "Watch";
+      }
+      else{
+        this.watchedTitle = "Watched";
+      }
+    })
+  }
+
+  toggleWatch() {
+    this.movieService.updateWatch("1", this.movieId).subscribe();
+    this.setIsWatched()
+  }
+
+
+
 
 }

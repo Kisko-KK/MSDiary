@@ -135,3 +135,15 @@ h4 :hover{
   border-radius: 4px;
   border: 1px solid #ADB9C4;
 }
+
+.activeLiked{
+  color: red;
+}
+
+.activeWatched{
+  color: green;
+}
+
+.cont{
+  width: 70px;
+}
