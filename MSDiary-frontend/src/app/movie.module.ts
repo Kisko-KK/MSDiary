@@ -94,3 +94,12 @@ export interface Like {
 export interface Watch {
     watched : number;
 }
+
+export interface DiaryMovie {
+    id:          number;
+    user_id:     string;
+    movie_id:    number;
+    description: null | string;
+    score:       number;
+    watch_again: number;
+}

@@ -23,7 +23,7 @@
 }
 
 textarea{
-  height: 150px;
+  height: 130px;
   font-size: 1.2em;
   background-color: #cde;
 }
@@ -57,7 +57,6 @@ button{
   margin-top: 20px;
   margin-bottom: 5px;
   transform: translate(30px, -9px);
-
 }
 
  

@@ -16,7 +16,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './footer/footer.component';
-
+import { AddToDiaryComponent } from './add-to-diary/add-to-diary.component';
+import {MatDatepickerModule} from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { DiaryCardComponent } from './diary-card/diary-card.component';
+import { DiaryComponent } from './diary/diary.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +35,10 @@ import { FooterComponent } from './footer/footer.component';
     ReviewCardComponent,
     MakeReviewComponent,
     FooterComponent,
+    AddToDiaryComponent,
+    NavBarComponent,
+    DiaryCardComponent,
+    DiaryComponent,
     
   ],
   imports: [
@@ -37,7 +48,10 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

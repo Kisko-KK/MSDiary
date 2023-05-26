@@ -1,13 +1,19 @@
+<app-nav-bar></app-nav-bar>
 <div class="container">
-    <div class="form-group">
-      <input 
-        id="query" 
-        type="text" 
-        class="form-control" 
-        [(ngModel)]="query"
-        (keyup.enter)="getSearchResults()">
+    <div class="d-flex flex-row align-items-center justify-content-center m-3">
+      <div class="form-group">
+        <input 
+          id="query" 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="query"
+          (keyup.enter)="getSearchResults()"
+          placeholder="Search for your movie"
+          >
+      </div>
+      <a (click)="getSearchResults()"><i class="fa-solid fa-magnifying-glass hover-pointer"></i></a>
     </div>
-    <button type="button" (click)="getSearchResults()" class="form-control btn btn-primary">Search</button>
+    
     <hr>
     
     <div *ngIf="!isSearched">
@@ -48,3 +54,5 @@
     
   </div>
   <app-footer></app-footer>
+
+

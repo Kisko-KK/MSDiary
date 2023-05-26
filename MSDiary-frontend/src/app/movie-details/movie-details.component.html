@@ -1,6 +1,7 @@
 <head>
   <script src="https://kit.fontawesome.com/0a66e31f85.js" crossorigin="anonymous"></script>
 </head>
+<app-nav-bar></app-nav-bar>
 <div 
   class="container"
   *ngIf="movieDetails$ | async as movie">
@@ -47,7 +48,7 @@
       <h3 class="my-3 text-white">Budget</h3>
       <p class=>{{ movie.budget | currency}}</p>
 
-      <h3 class="my-3 text-white">RATINGS</h3>
+      <h3 class="my-3 text-white">Ratings</h3>
       <p> Imdb {{movie.vote_average}}</p>
 
       <h4 class="my-5"><a [href]="movie.homepage">Find out more!</a></h4>
@@ -68,11 +69,11 @@
       </ul>
       <hr>
       <div>
-        <a (click)="openDialog(movie.title)" class="font">Review..</a>
+        <a (click)="openDialogReview(movie.title)" class="font">Review</a>
       </div>
       <hr>
       <div>
-        <a href="" class="font">Add to diary..</a>
+        <a (click)="openDialogDiary(movie.title)" [class.disable]="isAdded" class="font" [ngClass]="{'activeAdded' : isAdded}">{{addTitle}}</a>
       </div>
       <hr>
       <ul>

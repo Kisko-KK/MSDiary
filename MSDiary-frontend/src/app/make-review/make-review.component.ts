@@ -23,8 +23,6 @@ export class MakeReviewComponent {
     
   }
 
-  
-
   rating: number = 0;
 
   epform = new FormGroup({

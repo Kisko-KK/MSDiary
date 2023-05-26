@@ -9,13 +9,17 @@ const start = async () => {
     const server = Hapi.server({
         port: 8000,
         host: 'localhost',
+        
     });
 
     await server.register({
         plugin: HapiCors,
         options: {
-          origins: ['http://localhost:4200'] // allow requests from this origin
+          origins: ['http://localhost:4200'], // allow requests from this origin
+          methods: ['GET', 'POST', 'PUT', 'DELETE'], // specify allowed HTTP methods
+          headers: ['Accept', 'Content-Type'] // specify allowed headers
         }
+        
       });
 
     routes.forEach(route => server.route(route));

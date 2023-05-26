@@ -1,0 +1,30 @@
+<div *ngIf="movieDetails" (click)="goToMovieDetails(movie.movie_id.toString())">
+    <div class="wrapper row" >
+        
+        <div class="col-sm-1 index">
+            {{index + 1}}.
+            
+        </div>
+        <div class="col-md-1">
+            
+                <img  
+                class="img-fluid"
+                id="poster" 
+                [src]="'https://image.tmdb.org/t/p/original' + movieDetails.poster_path">
+        </div>
+        <div class="col-md-2 title">
+            {{movieDetails.title}}
+        </div>
+        <div class="col-md-1 score">
+            {{movie.score}}
+            <i class="fas fa-star"></i>
+        </div>
+        <div class="col-md-4">
+            {{movie.description}}
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <button (click)="deleteDiaryMovie(movie.movie_id.toString(), '1'); $event.stopPropagation();" href="#"><i class="fa-sharp fa-solid fa-trash"></i></button>
+        </div>
+    </div>
+</div>

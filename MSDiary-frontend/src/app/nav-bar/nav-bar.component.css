@@ -1,0 +1,16 @@
+
+
+.navbar-dark{
+    background-color: #0c0f11;
+    height: 7vh;
+}
+
+.navbar-brand{
+    font-size: 2.4em;
+    margin-right: 60%;
+    margin-left: 10px;
+}
+
+.nav-item{
+    font-size: 1.5em;
+}

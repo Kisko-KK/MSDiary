@@ -1,0 +1,71 @@
+*{
+    color: black;
+    
+}
+
+.popup{
+  background-color: #456;
+  border-radius: 5px;
+}
+
+h2, h3{
+  margin-left: 16px;
+}
+h2{
+  padding-top: 10px;
+  margin-bottom: 3px;
+  color: #9ab;
+  font-weight: lighter;
+  font-size: 0.9;
+}
+
+h3{
+  font-size: 2em;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+button{
+  margin: 5px auto;
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 2px;
+}
+
+.form-check-label{
+  font-size: 1em;
+  color: white;
+  position: relative;
+  top: 3px;
+}
+
+.form-check-lg .form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.form-check-lg .form-check-label {
+  font-size: 1.05rem;
+  line-height: 1.1em;
+}
+
+textarea{
+  height: 120px;
+  font-size: 1.2em;
+  background-color: #cde;
+}
+
+.form-range{
+  width: 80%;
+}
+.form-label{
+  font-size: 1.1rem;
+  line-height: 1.15em;
+  color: #FFF;
+}
+
+.fas{
+  color: yellow;
+}
+

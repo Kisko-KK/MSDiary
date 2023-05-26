@@ -1,25 +1,17 @@
 
-  <div class="card">
-	<img 
-    [src]="movie.poster_path" 
-    class="card-img-top" 
-    [alt]="movie.title">
-	<div class="card-body">
-		<h5 class="card-title">
-      {{ movie.title }}
-			<span class="badge badge-primary">{{ movie.genre_ids.toString() | uppercase }}</span>
-    </h5>
-		<p class="card-text">
-      {{ movie.title }}  was released in {{ movie.release_date }}.
-    </p>
-		<a 
-      routerLink="/movie-details" 
-      [queryParams]="{ movieId: movie.id}" 
-      class="btn btn-primary">
-			Learn More
+<a    
+  routerLink="/movie-details" 
+  [queryParams]="{ movieId: movie.id}" 
+  >
+		<div class="card bg-dark" id="card">
+      <img [src]="'https://image.tmdb.org/t/p/original' + movie.poster_path" class="card-image-top" class="rounded"/>
+      <div class="card-body" id="card-body">
+          <h6 class="card-footer text-center title">{{movie.title}}</h6>
+      </div>
+    </div>
+
 		</a>
-    
-	</div>
-</div>
+
+
 
 

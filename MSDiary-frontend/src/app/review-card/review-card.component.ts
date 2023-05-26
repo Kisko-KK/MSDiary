@@ -12,8 +12,7 @@ import { Observable } from 'rxjs';
 export class ReviewCardComponent implements OnInit{
 
   constructor(
-    private readonly movieService: MovieService,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly movieService: MovieService
   ) {}
 
   @Input()

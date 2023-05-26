@@ -1,8 +1,21 @@
-.form-control {
-    width: 30%;
-    
-}
-
 button{
     margin-top: 10px;
 }
+
+.hover-pointer {
+    cursor: pointer;
+  }
+
+
+.fa-solid{
+    zoom: 1.8;
+    margin-left: 5px;
+}
+
+.form-control{
+    background-color: #29323A;
+    color: white;
+}
+input::placeholder {
+    text-align: center;
+  }

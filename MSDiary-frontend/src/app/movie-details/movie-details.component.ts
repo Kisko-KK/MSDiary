@@ -5,6 +5,7 @@ import { MovieDetails, Review, User } from '../movie.module';
 import { MovieService } from '../movie.service';
 import { MakeReviewComponent } from '../make-review/make-review.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AddToDiaryComponent } from '../add-to-diary/add-to-diary.component';
 
 
 @Component({
@@ -27,7 +28,9 @@ export class MovieDetailsComponent implements OnInit{
   watchedTitle : string = "Watch";
   numReviewsDisplayed = 3;
   
-  
+  isAdded : number = 0;
+  addTitle : string = "Add to diary"
+
   constructor(
     private readonly route: ActivatedRoute,
     private readonly movieService: MovieService,
@@ -55,21 +58,41 @@ export class MovieDetailsComponent implements OnInit{
     
     this.setIsLiked();
     this.setIsWatched();
+    this.setIsAdded();
+
   }
   
 
-  openDialog(title : string) {
+  openDialogReview(title : string) {
     const modalRef = this.modalService.open(MakeReviewComponent, {centered : true, animation : true});
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.movieId = this.movieId;
   }
 
+  openDialogDiary(title : string) {
+    const modalRef = this.modalService.open(AddToDiaryComponent, {centered : true, animation : true});
+    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.movieId = this.movieId;
+  }
+
+  
   showMoreReviews(){
     this.numReviewsDisplayed += 2;
     setTimeout(() => {
       window.scrollTo(0, document.body.scrollHeight);
     }, 40);
   }
+
+  setIsAdded(){
+    this.movieService.getIsAdded("1", this.movieId).subscribe((isAdded) =>{
+      this.isAdded = isAdded;
+      if (this.isAdded > 0){
+        this.addTitle = "Added to diary"
+      }
+    }
+    )
+  }
+
 
   setIsLiked(){
     this.movieService.getIsLiked("1", this.movieId).subscribe((like) => 
@@ -106,8 +129,4 @@ export class MovieDetailsComponent implements OnInit{
     this.movieService.updateWatch("1", this.movieId).subscribe();
     this.setIsWatched()
   }
-
-
-
-
 }

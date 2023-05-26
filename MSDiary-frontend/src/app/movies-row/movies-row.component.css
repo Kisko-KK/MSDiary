@@ -29,7 +29,7 @@ a{
 
 #card :hover{
     transform: scale(1.03);
-    transition: 50ms;
+    transition: 30ms;
     overflow: hidden;
 }
 
@@ -40,3 +40,4 @@ h4{
     font-size: 1.5em;
     margin-top: 10px;
 }
+

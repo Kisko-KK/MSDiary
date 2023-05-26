@@ -1,7 +1,7 @@
 
 
 .container {
-    margin: 20px auto;
+    margin: 5px auto;
     max-width: 1100px;
   }
   
@@ -147,3 +147,9 @@ h4 :hover{
 .cont{
   width: 70px;
 }
+
+.activeAdded{
+  color: #2E3944;
+  pointer-events: none;
+}
+

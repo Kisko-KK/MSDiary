@@ -1,0 +1,15 @@
+<div class="wrapper">
+    <app-nav-bar></app-nav-bar>
+        
+
+    <div class="container">
+        <app-diary-card *ngFor="let movie of movies; index as i;"
+            [movie]="movie"
+            [index]="i"
+        ></app-diary-card>
+    </div>
+    
+    
+    <app-footer></app-footer>
+</div>
+

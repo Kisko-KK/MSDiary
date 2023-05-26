@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { map, Observable } from 'rxjs';
-import { Like, Movie, Review, User, Watch } from './movie.module';
+import { DiaryMovie, Like, Movie, Review, User, Watch } from './movie.module';
 
 
 const httpOptions = {
@@ -97,6 +97,27 @@ export class MovieService {
       {userId, movieId},
       httpOptions
     )
+  }
+
+  getIsAdded(userId : string, movieId : string) : Observable<number>{
+    return this.http.get<number>(`http://localhost:8000/api/diary/${movieId}/${userId}`);
+  }
+
+
+  addNewMovieToDiary(movieId : string, description : string, score : number, userId: string, watchAgain: number) : Observable<any>{
+    return this.http.post<any>(
+      'http://localhost:8000/api/diary',
+      {movieId, userId, description, score, watchAgain},
+      httpOptions
+    )
+  }
+
+  getAllMoviesForDiary(userId : string) : Observable<Array<DiaryMovie>>{
+    return this.http.get<Array<DiaryMovie>>(`http://localhost:8000/api/diary/${userId}`);
+  }
+
+  deleteDiaryMovie(movieId:string, userId:string) : Observable<any>{
+    return this.http.delete<any>(`http://localhost:8000/api/diary/${movieId}/${userId}`);
   }
 
 

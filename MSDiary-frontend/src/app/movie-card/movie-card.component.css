@@ -1,21 +1,45 @@
-.card {
-    margin-bottom: 15px;
-    min-height: 425px;
-    max-height: 450px;
-    max-width: 250px;
-  }
+a{
+  text-decoration: none;
+  color: white;
   
-  .card-img-top {
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .btn.btn-primary {
-    position: absolute;
-    margin-bottom: 20px;
-    bottom: 0;
-  }
-  
-  .card-body{
-    max-height: 100px;
-  }
+}
+
+
+.title{
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 20px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 0;
+  padding: 5px 0px 22px 0px;
+}
+
+#card-body{
+  margin: 0;
+  padding: 0;
+}
+
+#card{
+  border: 2px solid #ADB9C4;
+}
+
+#card :hover{
+  transform: scale(1.03);
+  transition: 50ms;
+  overflow: hidden;
+}
+
+h6{
+  margin: 0px 4px;
+}
+h4{
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+.card{
+  margin: 10px;
+}
