@@ -28,8 +28,8 @@ export class DiaryCardComponent implements OnInit{
   }
 
   
-  deleteDiaryMovie( movieId: string, userId : string){
-    this.movieService.deleteDiaryMovie(movieId,userId).subscribe();
+  deleteDiaryMovie( movieId: string){
+    this.movieService.deleteDiaryMovie(movieId).subscribe();
     location.reload();
   }
  

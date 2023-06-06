@@ -56,7 +56,7 @@ export class AddToDiaryComponent {
     console.log(description, score, watchAgain);
     
     if (score !== undefined && score !== null){
-      this.movieService.addNewMovieToDiary(this.movieId, description, score, "1", watchAgain).subscribe();
+      this.movieService.addNewMovieToDiary(this.movieId, description, score, watchAgain).subscribe();
       this.close();
       location.reload();
     }

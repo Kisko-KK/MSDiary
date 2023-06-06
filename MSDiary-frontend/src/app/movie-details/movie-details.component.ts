@@ -84,7 +84,7 @@ export class MovieDetailsComponent implements OnInit{
   }
 
   setIsAdded(){
-    this.movieService.getIsAdded("1", this.movieId).subscribe((isAdded) =>{
+    this.movieService.getIsAdded(this.movieId).subscribe((isAdded) =>{
       this.isAdded = isAdded;
       if (this.isAdded > 0){
         this.addTitle = "Added to diary"
@@ -95,7 +95,7 @@ export class MovieDetailsComponent implements OnInit{
 
 
   setIsLiked(){
-    this.movieService.getIsLiked("1", this.movieId).subscribe((like) => 
+    this.movieService.getIsLiked(this.movieId).subscribe((like) => 
     {
       this.isLiked = like.liked;
       if (like.liked == 0){
@@ -108,12 +108,12 @@ export class MovieDetailsComponent implements OnInit{
   }
 
   toggleLike() {
-    this.movieService.updateLike("1", this.movieId).subscribe();
+    this.movieService.updateLike(this.movieId).subscribe();
     this.setIsLiked()
   }
 
   setIsWatched(){
-    this.movieService.getIsWatched("1", this.movieId).subscribe((watch) => 
+    this.movieService.getIsWatched(this.movieId).subscribe((watch) => 
     {
       this.isWatched = watch.watched;
       if (watch.watched == 0){
@@ -126,7 +126,7 @@ export class MovieDetailsComponent implements OnInit{
   }
 
   toggleWatch() {
-    this.movieService.updateWatch("1", this.movieId).subscribe();
+    this.movieService.updateWatch(this.movieId).subscribe();
     this.setIsWatched()
   }
 }

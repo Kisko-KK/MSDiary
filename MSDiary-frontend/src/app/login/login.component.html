@@ -1,0 +1,12 @@
+<div id="page-wrap">
+    <div id="max-width-column" *ngIf="auth.user | async">
+        <button (click)="signOutClicked()">Sign Out</button>
+    </div>
+
+    <div id="max-width-column" *ngIf="!(auth.user | async)">
+        <button (click)="signInClicked()">Sign in with Google</button>
+    </div>
+</div>
+
+
+

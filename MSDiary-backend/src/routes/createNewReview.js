@@ -1,5 +1,5 @@
 import { db } from "../database";
-
+import * as admin from 'firebase-admin'
 
 export const createNewReview = {
     method: 'POST',
@@ -16,7 +16,10 @@ export const createNewReview = {
 
         const { movieId, description, score } = req.payload;
         const time = mysqlDatetime;
-        const userId = '0';
+        
+        const token = req.headers.authtoken;
+        const user = await admin.auth().verifyIdToken(token);
+        const userId = user.user_id;
 
         await db.query(
             'INSERT INTO reviews (user_id, movie_id, time, description, score) VALUES(?, ?, ?, ?, ?);',

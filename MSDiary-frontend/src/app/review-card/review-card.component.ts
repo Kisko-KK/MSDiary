@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Review, User } from '../movie.module';
 import { MovieService } from '../movie.service';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -18,18 +17,22 @@ export class ReviewCardComponent implements OnInit{
   @Input()
   review!: Review;
 
-  user! : Array<User>;
-
-  
+  username! : String;
 
   ngOnInit(): void {
-    this.movieService.getUserNameById(this.review.user_id)
-      .subscribe((user) => {this.user = user;})
+    this.movieService.getUserNameById(this.review.user_id).subscribe((response) => {
+      let usernameObject: any;
+    
+      if (typeof response === 'object') {
+        usernameObject = response;
+      } else if (typeof response === 'string') {
+        usernameObject = JSON.parse(response);
+      }
+      
+      this.username = usernameObject?.username || '';
+      console.log(this.username);
+    });
   }
-  
-  
-  
-
   
 
 }

@@ -2,13 +2,22 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { map, Observable } from 'rxjs';
 import { DiaryMovie, Like, Movie, Review, User, Watch } from './movie.module';
-
+import { AngularFireAuth } from '@angular/fire/compat/auth'
 
 const httpOptions = {
   headers : new HttpHeaders({
     'Content-Type' : 'application/json', 
   })
-}
+};
+
+const httpOptionsWithAuthToken = (token: any) => ({
+  headers : new HttpHeaders({
+    'Content-Type' : 'application/json', 
+    'AuthToken' : token,
+  })
+});
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +26,10 @@ export class MovieService {
 
   private readonly API_KEY = '6ecce39b80b6ac040387e5ec54b40565'
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private auth: AngularFireAuth,
+    ) { }
 
 
   searchMovie(searchQuery: string): Observable<Array<Movie>>{
@@ -63,61 +75,172 @@ export class MovieService {
     return this.http.get<Array<Review>>(`http://localhost:8000/api/movie/reviews/${movieId}`);
   }
 
-  getUserNameById(userId : string) : Observable<Array<User>>{
-    return this.http.get<Array<User>>(`http://localhost:8000/api/users/${userId}`);
+
+
+  getUserNameById(userId : string) : Observable<string>{
+    return this.http.get<string>(`http://localhost:8000/api/users/${userId}`);
   }
+
+
 
   createNewReview(movieId : string, description : string, score : number) : Observable<Review>{
-    return this.http.post<Review>(
-      'http://localhost:8000/api/movie/reviews',
-      {movieId, description, score},
-      httpOptions
-    )
-  }
 
-  getIsLiked(userId : string, movieId : string) : Observable<Like>{
-    return this.http.get<Like>(`http://localhost:8000/api/movie/likes/${movieId}/${userId}`);
-  }
-
-  updateLike(userId : string, movieId : string) : Observable<any>{
-    return this.http.post<Review>(
-      'http://localhost:8000/api/movie/likes/update',
-      {userId, movieId},
-      httpOptions
-    )
-  }
-
-  getIsWatched(userId : string, movieId : string) : Observable<Watch>{
-    return this.http.get<Watch>(`http://localhost:8000/api/movie/watches/${movieId}/${userId}`);
-  }
-
-  updateWatch(userId : string, movieId : string) : Observable<any>{
-    return this.http.post<Review>(
-      'http://localhost:8000/api/movie/watches/update',
-      {userId, movieId},
-      httpOptions
-    )
-  }
-
-  getIsAdded(userId : string, movieId : string) : Observable<number>{
-    return this.http.get<number>(`http://localhost:8000/api/diary/${movieId}/${userId}`);
+    return new Observable<Review>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          this.http.post<Review>('http://localhost:8000/api/movie/reviews',
+            {movieId, description, score}, httpOptionsWithAuthToken(token),)
+          .subscribe(() => {observer.next();
+          });
+        })
+      })
+    })
   }
 
 
-  addNewMovieToDiary(movieId : string, description : string, score : number, userId: string, watchAgain: number) : Observable<any>{
-    return this.http.post<any>(
-      'http://localhost:8000/api/diary',
-      {movieId, userId, description, score, watchAgain},
-      httpOptions
-    )
+  getIsLiked(movieId : string) : Observable<Like>{
+
+    return new Observable<Like>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          if(user && token){
+            this.http.get<Like>(`http://localhost:8000/api/movie/likes/${movieId}/${user.uid}`, httpOptionsWithAuthToken(token))
+            .subscribe( res => {
+              observer.next(res);
+            });
+          } else{
+            observer.next();
+          }
+        })
+      })
+    })
   }
 
-  getAllMoviesForDiary(userId : string) : Observable<Array<DiaryMovie>>{
-    return this.http.get<Array<DiaryMovie>>(`http://localhost:8000/api/diary/${userId}`);
+
+  updateLike(movieId : string) : Observable<any>{
+
+    return new Observable<any>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          this.http.post<Review>(
+            'http://localhost:8000/api/movie/likes/update',
+            { movieId},
+          httpOptionsWithAuthToken(token),)
+          .subscribe(() => {observer.next();
+          });
+        })
+      })
+    })
   }
 
-  deleteDiaryMovie(movieId:string, userId:string) : Observable<any>{
-    return this.http.delete<any>(`http://localhost:8000/api/diary/${movieId}/${userId}`);
+
+  getIsWatched( movieId : string) : Observable<Watch>{
+
+    return new Observable<Watch>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          if(user && token){
+            this.http.get<Watch>(`http://localhost:8000/api/movie/watches/${movieId}/${user.uid}`, httpOptionsWithAuthToken(token))
+            .subscribe( res => {
+              observer.next(res);
+            });
+          } else{
+            observer.next();
+          }
+        })
+      })
+    })
+  }
+
+
+  updateWatch( movieId : string) : Observable<any>{
+
+    return new Observable<any>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          this.http.post<Review>(
+            'http://localhost:8000/api/movie/watches/update',
+            {movieId},
+          httpOptionsWithAuthToken(token),)
+          .subscribe(() => {observer.next();
+          });
+        })
+      })
+    })
+
+    
+  }
+
+
+  getIsAdded(movieId : string) : Observable<number>{
+
+    return new Observable<number>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          if(user && token){
+            this.http.get<number>(`http://localhost:8000/api/diary/${movieId}/${user.uid}`, httpOptionsWithAuthToken(token))
+            .subscribe( res => {
+              observer.next(res);
+            });
+          } else{
+            observer.next();
+          }
+        })
+      })
+    })
+
+  }
+
+
+
+  addNewMovieToDiary(movieId : string, description : string, score : number, watchAgain: number) : Observable<any>{
+
+    return new Observable<any>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          this.http.post<any>(`http://localhost:8000/api/diary`, 
+          {movieId, description, score, watchAgain},
+          httpOptionsWithAuthToken(token),)
+          .subscribe(() => {observer.next();
+          });
+        })
+      })
+    })
+
+
+  }
+
+
+  getAllMoviesForDiary() : Observable<Array<DiaryMovie>>{
+
+    return new Observable<Array<DiaryMovie>>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          if(user && token){
+            this.http.get<Array<DiaryMovie>>(`http://localhost:8000/api/diary/${user.uid}`, httpOptionsWithAuthToken(token))
+            .subscribe( movies => {
+              observer.next(movies);
+            });
+          } else{
+            observer.next([]);
+          }
+        })
+      })
+    })
+
+  }
+
+
+  deleteDiaryMovie(movieId:string) : Observable<any>{
+    return new Observable<any>(observer => {
+      this.auth.user.subscribe(user => {
+        user && user.getIdToken().then(token => {
+          this.http.delete(`http://localhost:8000/api/diary/${movieId}`, httpOptionsWithAuthToken(token))
+          .subscribe(() => {observer.next();
+          });
+        })
+      })
+    })
   }
 
 

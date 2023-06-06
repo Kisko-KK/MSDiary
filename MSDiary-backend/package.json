@@ -14,6 +14,7 @@
     "@babel/runtime": "^7.21.0",
     "@hapi/boom": "^10.0.1",
     "@hapi/hapi": "^21.3.0",
+    "firebase-admin": "^11.9.0",
     "hapi-cors": "^1.0.3",
     "mysql": "^2.18.1",
     "nv-js-err-tmpl": "^1.0.1"

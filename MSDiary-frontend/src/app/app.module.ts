@@ -20,10 +20,17 @@ import { AddToDiaryComponent } from './add-to-diary/add-to-diary.component';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import { MatSliderModule } from '@angular/material/slider';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DiaryCardComponent } from './diary-card/diary-card.component';
 import { DiaryComponent } from './diary/diary.component';
+
+
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireModule } from '@angular/fire/compat'
+import { environment } from 'environments/environments';
+import { LoginComponent } from './login/login.component';
+
+
 
 @NgModule({
   declarations: [
@@ -39,6 +46,7 @@ import { DiaryComponent } from './diary/diary.component';
     NavBarComponent,
     DiaryCardComponent,
     DiaryComponent,
+    LoginComponent,
     
   ],
   imports: [
@@ -52,6 +60,10 @@ import { DiaryComponent } from './diary/diary.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

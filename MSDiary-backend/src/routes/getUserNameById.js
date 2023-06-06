@@ -1,15 +1,18 @@
 import { db } from "../database";
+import * as admin from 'firebase-admin'
 
-
-export const getUserNameById = {
+export const getUsernameById = {
     method: 'GET',
     path: '/api/users/{id}',
     handler: async (req, h) => {
-        const id = req.params.id;
-        const {results} = await db.query(
-            'SELECT * FROM users WHERE id = ?',
-            [id],
-        );
-        return results;
+      const userId = req.params.id;
+    
+      const userRecord = await admin.auth().getUser(userId);
+  
+      const response = {
+        username: userRecord.displayName || ''
+      };
+  
+      return response;
     }
-}
+  };

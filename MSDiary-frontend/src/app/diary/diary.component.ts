@@ -14,7 +14,7 @@ export class DiaryComponent implements OnInit{
   movies! : Array<DiaryMovie>;
 
   ngOnInit(): void {
-    this.movieService.getAllMoviesForDiary("1").subscribe((movies)=>
+    this.movieService.getAllMoviesForDiary().subscribe((movies)=>
       {
         this.movies = movies;
       }

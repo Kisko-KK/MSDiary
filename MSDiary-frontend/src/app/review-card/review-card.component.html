@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div *ngIf="user">
+<div *ngIf="username">
 
   <div class="d-flex flex-row align-items-center">
     <img
@@ -8,7 +8,7 @@
         alt="User icon"
     />
     <div>
-        <div><span class="review-by">Review by&nbsp;</span><strong class="username">{{user[0].name}}</strong></div>
+        <div><span class="review-by">Review by&nbsp;</span><strong class="username">{{username}}</strong></div>
         <small class="text-muted">{{review.time |  date:'MM/dd/yyyy'}}</small>
     </div>
     

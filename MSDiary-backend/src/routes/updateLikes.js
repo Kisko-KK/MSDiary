@@ -1,11 +1,17 @@
 import { db } from "../database";
+import * as admin from 'firebase-admin'
 
 export const updateLikes = {
   method: 'POST',
   path: '/api/movie/likes/update',
   handler: async (req, h) => {
-    const { movieId, userId } = req.payload;
+    const { movieId } = req.payload;
     const liked = 1;
+
+    const token = req.headers.authtoken;
+    const user = await admin.auth().verifyIdToken(token);
+    const userId = user.user_id;
+
 
     try {
       await db.query(

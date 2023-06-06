@@ -1,7 +1,7 @@
 import { getAllUsers } from "./getAllUsers";
 import { getAllReviewsForMovie } from "./getAllReviewsForMovie";
 import { createNewReview } from "./createNewReview";
-import { getUserNameById } from "./getUserNameById";
+import { getUsernameById } from "./getUserNameById";
 import { getIsLiked } from "./getIsLiked";
 import { updateLikes } from "./updateLikes";
 import { updateWatches } from "./updateWatches";
@@ -15,7 +15,7 @@ export default [
     getAllUsers,
     getAllReviewsForMovie,
     createNewReview,
-    getUserNameById,
+    getUsernameById,
     getIsLiked,
     updateLikes,
     updateWatches,
